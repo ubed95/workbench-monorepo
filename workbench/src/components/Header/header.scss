@@ -1,0 +1,38 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    box-sizing: border-box;
+    width: 100vw;
+    max-width: 1280px;
+
+    &__title {
+        font-size: 20px;
+        line-height: 28px;
+        font-weight: bold;
+        color: #2c3e50;
+        letter-spacing: 1px;
+    }
+
+    &__profile-btn {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        border-radius: 4px;
+        border: none;
+        background: #27ae60;
+        color: #fff;
+        cursor: pointer;
+    }
+    &__logout-btn {
+        padding: 5px 10px;
+        font-size: 12px;
+        border-radius: 4px;
+        border: #000;
+        background: #1e1e1e;
+        color: #fff;
+        cursor: pointer;
+    }
+}

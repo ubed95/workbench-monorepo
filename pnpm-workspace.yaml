@@ -1,0 +1,7 @@
+packages:
+  - 'packages/ui'
+  - 'packages/utils'
+  - 'packages/nvest-dynamic-form'
+  - 'workbench'
+
+
