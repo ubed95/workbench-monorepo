@@ -6,7 +6,6 @@
     "paths": {
       "@/*": ["./src/*"],
       "@kiwi-ui": ["./src/kiwi-ui"],
-      "@shadcn-ui/*": ["./src/shadcn-ui/*"],
       "@services/*": ["./src/services/*"],
       "@features/*": ["./src/features/*"],
       "@hooks/*": ["./src/hooks/*"],

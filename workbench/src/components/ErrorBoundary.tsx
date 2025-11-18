@@ -1,47 +1,47 @@
-import React from 'react';
-import { captureException } from '@services/logger.service';
-import { Button } from '@shadcn-ui/button.tsx';
+import { Button } from '@mui/material'
+import { captureException } from '@services/logger.service'
+import React from 'react'
 
-type ErrorBoundaryProps = {
+interface ErrorBoundaryProps {
   fallback?: React.ReactNode;
   children: React.ReactNode;
-};
+}
 
-type ErrorBoundaryState = {
+interface ErrorBoundaryState {
   hasError: boolean;
   error?: Error;
   remountKey: number;
-};
+}
 
 export default class ErrorBoundary extends React.Component<
   ErrorBoundaryProps,
   ErrorBoundaryState
 > {
   constructor(props: ErrorBoundaryProps) {
-    super(props);
-    this.state = { hasError: false, remountKey: 0 };
+    super(props)
+    this.state = { hasError: false, remountKey: 0 }
   }
 
   static getDerivedStateFromError(error: Error): ErrorBoundaryState {
-    return { hasError: true, error, remountKey: 0 };
+    return { hasError: true, error, remountKey: 0 }
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    captureException(error, { errorInfo });
+    captureException(error, { errorInfo })
   }
 
   handleRetry = () => {
     // Force a child subtree remount by bumping a key
-    this.setState((prev) => ({
+    this.setState(prev => ({
       hasError: false,
       error: undefined,
       remountKey: prev.remountKey + 1,
-    }));
-  };
+    }))
+  }
 
   render() {
     if (this.state.hasError) {
-      if (this.props.fallback) return <>{this.props.fallback}</>;
+      if (this.props.fallback) { return <>{this.props.fallback}</> }
       return (
         <div
           style={{
@@ -62,13 +62,13 @@ export default class ErrorBoundary extends React.Component<
             </Button>
           </div>
         </div>
-      );
+      )
     }
     // key ensures child subtree remounts after retry
     return (
       <React.Fragment key={this.state.remountKey}>
         {this.props.children}
       </React.Fragment>
-    );
+    )
   }
 }

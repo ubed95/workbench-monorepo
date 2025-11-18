@@ -20,7 +20,6 @@
     "@mono/utils": "workspace:*",
     "@mui/material": "^7.3.5",
     "@radix-ui/react-slot": "^1.2.3",
-    "@reduxjs/toolkit": "^2.8.2",
     "@segment/analytics-next": "^1.81.1",
     "@sentry/react": "^10.7.0",
     "@tailwindcss/vite": "^4.1.12",
@@ -30,9 +29,7 @@
     "lucide-react": "^0.541.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-redux": "^9.2.0",
     "react-router": "^7.8.2",
-    "redux-saga": "^1.3.0",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.12"
   },
