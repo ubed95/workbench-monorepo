@@ -6,10 +6,20 @@
   "scripts": {
     "dev": "pnpm --filter workbench dev",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test:all": "pnpm -r test"
+    "test:all": "pnpm -r test",
+    "prepare": "husky"
+  },
+  "engines": {
+    "node": ">=22.0.0"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.22.0"
+  "packageManager": "pnpm@10.22.0",
+  "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "eslint": "^9.39.1",
+    "husky": "^9.1.7"
+  }
 }

@@ -1,6 +1,7 @@
-import { type ChangeEvent, useState } from 'react'
-import { Button } from '@mono/ui';
-import { add } from '@mono/utils';
+import type { ChangeEvent } from 'react'
+import { Button } from '@mono/ui'
+import { add } from '@mono/utils'
+import { useState } from 'react'
 
 function AddNumbers() {
   const [nums, setNums] = useState({
@@ -12,18 +13,20 @@ function AddNumbers() {
     setNums(prevNums => ({
       ...prevNums,
       [key]: e.target.value,
-    }));
-  };
-
+    }))
+  }
 
   return (
     <div>
-      <input type='text' value={nums.a} onChange={handleNumChange('a')} />
-      <input type='text' value={nums.b} onChange={handleNumChange('b')} />
+      <input type="text" value={nums.a} onChange={handleNumChange('a')} />
+      <input type="text" value={nums.b} onChange={handleNumChange('b')} />
       <Button onClick={() => {
-        alert(add(Number(nums.a), Number(nums.b)));
-      }}>Add</Button>
+        console.log(add(Number(nums.a), Number(nums.b)))
+      }}
+      >
+        Add
+      </Button>
     </div>
   )
 }
-export default AddNumbers;
+export default AddNumbers
