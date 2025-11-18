@@ -5,12 +5,10 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@kiwi-ui": ["./src/kiwi-ui"],
       "@services/*": ["./src/services/*"],
-      "@features/*": ["./src/features/*"],
       "@hooks/*": ["./src/hooks/*"],
-      "@redux/*": ["./src/redux/*"],
-      "@components/*": ["./src/components/*"]
+      "@components/*": ["./src/components/*"],
+      "@lib/*": ["./src/lib/*"]
     }
   },
   "include": ["src"]
