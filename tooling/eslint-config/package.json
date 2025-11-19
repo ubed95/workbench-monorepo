@@ -1,0 +1,38 @@
+{
+  "name": "@kiwi-tooling/eslint-config",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "packageManager": "pnpm@10.22.0",
+  "description": "ESLint config for Workbench monorepo",
+  "author": {
+    "name": "Nidhi Bhanushali",
+    "email": "nidhi.bhanushali@kiwiinsurance.com"
+  },
+  "license": "UNLICENSED",
+  "keywords": [
+    "eslint",
+    "eslint-config",
+    "kiwi",
+    "workbench"
+  ],
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./src/index.js"
+    }
+  },
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^6.2.0",
+    "deepmerge-ts": "^7.1.5",
+    "eslint-plugin-format": "^1.0.2",
+    "eslint-plugin-no-relative-import-paths": "^1.6.1"
+  }
+}

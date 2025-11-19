@@ -1,18 +1,8 @@
-import './App.css';
-import AppRoutes from './AppRoutes.tsx';
-import Header from './components/Header/Header.tsx';
-import Footer from './components/Footer/Footer.tsx';
-import AddNumbers from '@components/AddNumbers.tsx';
+import AddNumbers from '@components/AddNumbers.tsx'
+import './App.css'
 
 function App() {
-  return (
-    <>
-      <AddNumbers />
-      <Header />
-      <AppRoutes />
-      <Footer />
-    </>
-  );
+  return <AddNumbers />
 }
 
-export default App;
+export default App

@@ -21,8 +21,8 @@
     "clsx": "^2.1.1",
     "expr-eval": "^2.0.2",
     "lucide-react": "^0.462.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "react-router-dom": "^6.30.1",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7"
@@ -30,8 +30,8 @@
   "devDependencies": {
     "@eslint/js": "^9.32.0",
     "@types/node": "^22.16.5",
-    "@types/react": "^18.3.23",
-    "@types/react-dom": "^18.3.7",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
     "@vitejs/plugin-react-swc": "^3.11.0",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.32.0",
@@ -41,7 +41,7 @@
     "lovable-tagger": "^1.1.11",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.8.3",
+    "typescript": "^5.9.3",
     "typescript-eslint": "^8.38.0",
     "vite": "^5.4.19"
   }

@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "joshbolduc.commitlint",
+    "vivaxy.vscode-conventional-commits",
+    "usernamehw.errorlens",
+    "editorconfig.editorconfig",
+    "dotenv.dotenv-vscode",
+    "dbaeumer.vscode-eslint",
+    "antfu.pnpm-catalog-lens",
+    "adrianolima.gutter-codelens",
+    "aaron-bond.better-comments"
+  ],
+  "unwantedRecommendations": [
+    "esbenp.prettier-vscode"
+  ]
+}

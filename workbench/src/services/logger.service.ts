@@ -1,10 +1,10 @@
-import * as Sentry from '@sentry/react';
+import * as Sentry from '@sentry/react'
 // TODO: rearrange proper util fns and export.
 
 const initSentry = () => {
-  const sentryDsnUrl = import.meta.env.VITE_SENTRY_DSN_URL;
+  const sentryDsnUrl = import.meta.env.VITE_SENTRY_DSN_URL
   // console.log('Sentry Url: ', sentryDsnUrl);
-  if (!sentryDsnUrl) return console.log('Sentry DSN Url Not found. ');
+  if (!sentryDsnUrl) { return console.log('Sentry DSN Url Not found. ') }
   Sentry.init({
     dsn: sentryDsnUrl,
     // Setting this option to true will send default PII data to Sentry.
@@ -12,22 +12,22 @@ const initSentry = () => {
     sendDefaultPii: true,
     // Enable logs to be sent to Sentry
     enableLogs: true,
-  });
-  console.log('Sentry Initialized!');
-};
+  })
+  console.log('Sentry Initialized!')
+}
 
 const captureException = (
   error: unknown,
-  context?: Record<string, unknown>
+  context?: Record<string, unknown>,
 ) => {
   try {
-    Sentry.captureException(error, { extra: context });
+    Sentry.captureException(error, { extra: context })
   } catch (_) {
     // swallow errors from the logger to avoid cascading failures
-    console.log('Exception: ', _);
+    console.log('Exception: ', _)
   }
-};
+}
 
-export { initSentry, captureException };
+export { captureException, initSentry }
 
-export default Sentry.logger;
+export default Sentry.logger

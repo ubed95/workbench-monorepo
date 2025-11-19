@@ -1,7 +1,7 @@
 packages:
-  - 'packages/ui'
-  - 'packages/utils'
-  - 'packages/nvest-dynamic-form'
+  - 'packages/*'
   - 'workbench'
+  - 'tooling/*'
 
-
+catalog:
+  typescript: ^5.9.3
