@@ -9,12 +9,10 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@kiwi-ui': path.resolve(__dirname, './src/kiwi-ui'),
       '@services': path.resolve(__dirname, './src/services'),
-      '@features': path.resolve(__dirname, './src/features'),
       '@hooks': path.resolve(__dirname, './src/hooks'),
-      '@redux': path.resolve(__dirname, './src/redux'),
       '@components': path.resolve(__dirname, './src/components'),
+      '@lib': path.resolve(__dirname, './src/lib'),
     },
   },
 })
