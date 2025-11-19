@@ -38,7 +38,7 @@ export class ExpressionEvaluator {
 
     const variables = new Set<string>();
     const hasConditional = expression.includes('?');
-    const hasMath = /[\+\-\*\/]/.test(expression);
+    const hasMath = /[+\-*/]/.test(expression);
 
     // Extract @FIELDNAME references
     const fieldPattern = /@([A-Z_][A-Z0-9_]*)/g;
