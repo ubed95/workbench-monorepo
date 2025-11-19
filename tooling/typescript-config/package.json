@@ -1,0 +1,31 @@
+{
+  "name": "@kiwi-tooling/typescript-config",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "packageManager": "pnpm@10.22.0",
+  "description": "TypeScript config for Workbench monorepo",
+  "author": {
+    "name": "Nidhi Bhanushali",
+    "email": "nidhi.bhanushali@kiwiinsurance.com"
+  },
+  "license": "UNLICENSED",
+  "keywords": ["typescript", "tsconfig", "kiwi", "workbench"],
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./src/index.js"
+    },
+    "./web.app.json": "./web.app.json",
+    "./web.node.json": "./web.node.json",
+    "./web.lib.json": "./web.lib.json"
+  },
+  "main": "src/index.js",
+  "files": [
+    "src",
+    "*.json"
+  ]
+}

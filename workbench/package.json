@@ -1,8 +1,8 @@
 {
   "name": "workbench",
-  "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -13,8 +13,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mono/nvest-dynamic-form": "workspace:*",
+    "@mono/ui": "workspace:*",
+    "@mono/utils": "workspace:*",
+    "@mui/material": "^7.3.5",
     "@radix-ui/react-slot": "^1.2.3",
-    "@reduxjs/toolkit": "^2.8.2",
     "@segment/analytics-next": "^1.81.1",
     "@sentry/react": "^10.7.0",
     "@tailwindcss/vite": "^4.1.12",
@@ -22,25 +27,19 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.541.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-redux": "^9.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "react-router": "^7.8.2",
-    "redux-saga": "^1.3.0",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.12",
-    "@mono/ui": "workspace:*",
-    "@mono/utils": "workspace:*",
-    "@mono/nvest-dynamic-form": "workspace:*"
-  },
-  "engines": {
-    "node": "v22"
+    "tailwindcss": "^4.1.12"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
+    "@kiwi-tooling/eslint-config": "workspace:*",
+    "@kiwi-tooling/typescript-config": "workspace:*",
     "@types/node": "^24.3.0",
-    "@types/react": "^19.1.10",
-    "@types/react-dom": "^19.1.7",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
     "@typescript-eslint/eslint-plugin": "^8.41.0",
     "@typescript-eslint/parser": "^8.41.0",
     "@vitejs/plugin-react": "^5.0.0",
@@ -56,11 +55,8 @@
     "prettier": "^3.6.2",
     "sass": "^1.91.0",
     "tw-animate-css": "^1.3.7",
-    "typescript": "~5.8.3",
+    "typescript": "^5.9.3",
     "typescript-eslint": "^8.39.1",
     "vite": "^7.1.2"
-  },
-  "lint-staged": {
-    "src/**/*.{js,ts,jsx,tsx}": "prettier --write"
   }
 }

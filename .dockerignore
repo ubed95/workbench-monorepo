@@ -2,7 +2,6 @@
 **/dist
 **/node_modules
 **/build
-**/dist-ssr
 
 # Logs
 **/logs
@@ -62,7 +61,6 @@
 **/.env.development
 **/.env.test
 **/.env.production
-**/*.local
 
 # temp directory
 .temp
@@ -80,11 +78,7 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 # Drive storage folders
 **/.storage
 
-# Development secrets
-**/.dev-secrets/
-**/.secrets/
-
-# React/Next.js
-**/.next/
-**/out/
-**/.cache/
+# Docker
+**/Dockerfile*
+**/docker-compose*.yml
+**/docker-compose*.yaml

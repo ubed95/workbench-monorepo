@@ -1,9 +1,9 @@
-import { initSentry } from './logger.service.ts';
-import { initializeAnalytics } from './analytics.service.ts';
+import { initializeAnalytics } from './analytics.service.ts'
+import { initSentry } from './logger.service.ts'
 
 const initializeServices = () => {
-  initSentry();
-  initializeAnalytics();
-};
+  initSentry()
+  initializeAnalytics()
+}
 
-export default initializeServices;
+export default initializeServices
