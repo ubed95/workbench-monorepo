@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@kiwi-tooling/typescript-config": "workspace:*",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@types/node": "^24.10.0",
