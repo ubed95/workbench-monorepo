@@ -1,7 +1,0 @@
-import type { ComponentProps } from "react";
-
-const Button = (props: ComponentProps<'button'>) => (
-  <button {...props}/>
-);
-
-export default Button;
