@@ -1,8 +1,10 @@
-import type { Components, Theme } from '@mui/material/styles';
+import { Components, Theme } from '@mui/material/styles';
 
 /**
- * Component-level theme overrides
- * Ensures all MUI components use primary color for focus states
+ * Component-level theme overrides (MUI v7)
+ * Ensures all MUI components use primary color for focus/hover states
+ *
+ * Uses !important for focus states to override Tailwind CSS layers
  */
 export const components: Components<Theme> = {
   // Button overrides
@@ -11,65 +13,93 @@ export const components: Components<Theme> = {
       root: ({ theme }) => ({
         borderRadius: theme.spacing(1),
         padding: `${theme.spacing(1)} ${theme.spacing(2)}`,
+        textTransform: 'none',
         '&:focus-visible': {
           outline: `2px solid ${theme.palette.primary.main}`,
           outlineOffset: '2px',
         },
       }),
-      contained: () => ({
+      contained: {
         boxShadow: 'none',
         '&:hover': {
           boxShadow: 'none',
         },
-      }),
+      },
+    },
+    defaultProps: {
+      color: 'primary',
     },
   },
 
-  // TextField overrides - Primary color for focus
+  // TextField overrides - STRONGER specificity for Tailwind override
   MuiTextField: {
     styleOverrides: {
       root: ({ theme }) => ({
         '& .MuiOutlinedInput-root': {
           '&:hover .MuiOutlinedInput-notchedOutline': {
-            borderColor: theme.palette.primary.main,
+            borderColor: `${theme.palette.primary.main} !important`,
           },
           '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-            borderColor: theme.palette.primary.main,
-            borderWidth: '2px',
+            borderColor: `${theme.palette.primary.main} !important`,
+            borderWidth: '2px !important',
           },
+        },
+        '& .MuiInputLabel-root.Mui-focused': {
+          color: `${theme.palette.primary.main} !important`,
         },
       }),
     },
   },
 
-  // Input overrides
+  // Input overrides - FORCE primary color on focus
   MuiOutlinedInput: {
     styleOverrides: {
       root: ({ theme }) => ({
         borderRadius: theme.spacing(1),
         '&:hover .MuiOutlinedInput-notchedOutline': {
-          borderColor: theme.palette.primary.main,
+          borderColor: `${theme.palette.primary.main} !important`,
         },
-        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-          borderColor: theme.palette.primary.main,
+        '&.Mui-focused': {
+          '& .MuiOutlinedInput-notchedOutline': {
+            borderColor: `${theme.palette.primary.main} !important`,
+            borderWidth: '2px !important',
+          },
         },
         '&:focus-visible': {
-          outline: `2px solid ${theme.palette.primary.main}`,
+          outline: `2px solid ${theme.palette.primary.main} !important`,
           outlineOffset: '2px',
         },
       }),
       notchedOutline: ({ theme }) => ({
-        borderColor: theme.palette.divider, // Using your border color
+        borderColor: theme.palette.divider,
+        transition: 'border-color 200ms cubic-bezier(0.4, 0, 0.2, 1)',
       }),
     },
   },
 
-  // Input label
+  // Input label - FORCE primary color on focus
   MuiInputLabel: {
     styleOverrides: {
       root: ({ theme }) => ({
         '&.Mui-focused': {
-          color: theme.palette.primary.main,
+          color: `${theme.palette.primary.main} !important`,
+        },
+      }),
+    },
+  },
+
+  // Input base (for MUI Input component)
+  MuiInput: {
+    styleOverrides: {
+      root: ({ theme }) => ({
+        '&:before': {
+          borderBottomColor: theme.palette.divider,
+        },
+        '&:hover:not(.Mui-disabled):before': {
+          borderBottomColor: `${theme.palette.primary.main} !important`,
+        },
+        '&.Mui-focused:after': {
+          borderBottomColor: `${theme.palette.primary.main} !important`,
         },
       }),
     },
@@ -89,6 +119,9 @@ export const components: Components<Theme> = {
         },
       }),
     },
+    defaultProps: {
+      color: 'primary',
+    },
   },
 
   // Radio overrides
@@ -104,6 +137,9 @@ export const components: Components<Theme> = {
           outlineOffset: '2px',
         },
       }),
+    },
+    defaultProps: {
+      color: 'primary',
     },
   },
 
@@ -125,14 +161,18 @@ export const components: Components<Theme> = {
         },
       }),
     },
+    defaultProps: {
+      color: 'primary',
+    },
   },
 
   // Select overrides
   MuiSelect: {
     styleOverrides: {
-      select: () => ({
-        '&:focus': {
-          backgroundColor: 'transparent',
+      root: ({ theme }) => ({
+        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+          borderColor: `${theme.palette.primary.main} !important`,
+          borderWidth: '2px !important',
         },
       }),
     },
@@ -186,6 +226,7 @@ export const components: Components<Theme> = {
   MuiTab: {
     styleOverrides: {
       root: ({ theme }) => ({
+        textTransform: 'none',
         '&.Mui-selected': {
           color: theme.palette.primary.main,
         },
@@ -194,6 +235,15 @@ export const components: Components<Theme> = {
           outlineOffset: '2px',
         },
       }),
+    },
+  },
+
+  // Form Control Label
+  MuiFormControlLabel: {
+    styleOverrides: {
+      root: {
+        marginLeft: 0,
+      },
     },
   },
 };

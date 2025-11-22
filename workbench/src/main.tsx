@@ -1,5 +1,6 @@
+import { theme } from '@mono/ui' // ← ADD THIS
 import GlobalStyles from '@mui/material/GlobalStyles'
-import { StyledEngineProvider } from '@mui/material/styles'
+import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles' // ← ADD THIS
 import initializeServices from '@services/initialization.service'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
@@ -15,12 +16,14 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ErrorBoundary>
       <QueryProvider>
-        <StyledEngineProvider enableCssLayer>
-          <GlobalStyles styles="@layer theme, base, mui, components, utilities;" />
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </StyledEngineProvider>
+        <ThemeProvider theme={theme}>
+          <StyledEngineProvider enableCssLayer>
+            <GlobalStyles styles="@layer theme, base, mui, components, utilities;" />
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </StyledEngineProvider>
+        </ThemeProvider>
       </QueryProvider>
     </ErrorBoundary>
   </StrictMode>,

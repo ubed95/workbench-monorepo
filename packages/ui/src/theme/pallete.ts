@@ -1,10 +1,11 @@
 import { type PaletteOptions } from '@mui/material/styles';
 
 /**
- * HSL to RGB conversion utility
- * MUI requires RGB values for palette colors
+ * HSL to Hex conversion utility
+ * MUI requires hex values for palette colors
+ * Opacity is handled separately by MUI's alpha() function
  */
-function hslToRgb(h: number, s: number, l: number, opacity: number = 1): string {
+function hslToHex(h: number, s: number, l: number): string {
   s /= 100;
   l /= 100;
 
@@ -13,11 +14,12 @@ function hslToRgb(h: number, s: number, l: number, opacity: number = 1): string 
   const f = (n: number) =>
     l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
 
-  const r = Math.round(255 * f(0));
-  const g = Math.round(255 * f(8));
-  const b = Math.round(255 * f(4));
+  const toHex = (x: number) => {
+    const hex = Math.round(x * 255).toString(16);
+    return hex.length === 1 ? '0' + hex : hex;
+  };
 
-  return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+  return `#${toHex(f(0))}${toHex(f(8))}${toHex(f(4))}`;
 }
 
 /**
@@ -29,70 +31,73 @@ function hslToRgb(h: number, s: number, l: number, opacity: number = 1): string 
 export const colors = {
   // Base colors from your HSL values
   primary: {
-    main: hslToRgb(135, 48, 24),      // hsl(135 48% 24%)
-    light: hslToRgb(135, 48, 35),     // Lighter variant
-    dark: hslToRgb(135, 48, 18),      // Darker variant
+    main: hslToHex(135, 48, 24),      // hsl(135 48% 24%)
+    light: hslToHex(135, 48, 35),     // Lighter variant
+    dark: hslToHex(135, 48, 18),      // Darker variant
     contrastText: '#ffffff',          // hsl(0 0% 100%)
   },
   secondary: {
-    main: hslToRgb(115, 50, 92),      // hsl(115 50% 92%)
-    light: hslToRgb(115, 50, 96),     // Lighter variant
-    dark: hslToRgb(115, 50, 85),      // Darker variant
-    contrastText: hslToRgb(135, 48, 24), // primary color - hsl(135 48% 24%)
+    main: hslToHex(115, 50, 92),      // hsl(115 50% 92%)
+    light: hslToHex(115, 50, 96),     // Lighter variant
+    dark: hslToHex(115, 50, 85),      // Darker variant
+    contrastText: hslToHex(135, 48, 24), // primary color - hsl(135 48% 24%)
   },
   accent: {
-    main: hslToRgb(80, 80, 70),       // hsl(80 80% 70%)
-    light: hslToRgb(80, 80, 80),
-    dark: hslToRgb(80, 80, 60),
-    contrastText: hslToRgb(0, 0, 9),  // hsl(0 0% 9%)
+    main: hslToHex(80, 80, 70),       // hsl(80 80% 70%)
+    light: hslToHex(80, 80, 80),
+    dark: hslToHex(80, 80, 60),
+    contrastText: hslToHex(0, 0, 9),  // hsl(0 0% 9%)
   },
   error: {
-    main: hslToRgb(0, 72, 51),        // hsl(0 72% 51%) - destructive
-    light: hslToRgb(0, 72, 65),
-    dark: hslToRgb(0, 72, 40),
+    main: hslToHex(0, 72, 51),        // hsl(0 72% 51%) - destructive
+    light: hslToHex(0, 72, 65),
+    dark: hslToHex(0, 72, 40),
     contrastText: '#ffffff',          // hsl(0 0% 100%)
   },
   warning: {
-    main: hslToRgb(45, 90, 60),       // Generated warning color
-    light: hslToRgb(45, 90, 70),
-    dark: hslToRgb(45, 90, 50),
-    contrastText: hslToRgb(0, 0, 9),
+    main: hslToHex(45, 90, 60),       // Generated warning color
+    light: hslToHex(45, 90, 70),
+    dark: hslToHex(45, 90, 50),
+    contrastText: hslToHex(0, 0, 9),
   },
   info: {
-    main: hslToRgb(200, 70, 50),      // Generated info color
-    light: hslToRgb(200, 70, 60),
-    dark: hslToRgb(200, 70, 40),
+    main: hslToHex(200, 70, 50),      // Generated info color
+    light: hslToHex(200, 70, 60),
+    dark: hslToHex(200, 70, 40),
     contrastText: '#ffffff',
   },
   success: {
-    main: hslToRgb(135, 48, 24),      // Using primary as success
-    light: hslToRgb(135, 48, 35),
-    dark: hslToRgb(135, 48, 18),
+    main: hslToHex(135, 48, 24),      // Using primary as success
+    light: hslToHex(135, 48, 35),
+    dark: hslToHex(135, 48, 18),
     contrastText: '#ffffff',
   },
   background: {
-    default: hslToRgb(0, 0, 100),     // hsl(0 0% 100%) - white
-    paper: hslToRgb(0, 0, 100),       // card - hsl(0 0% 100%)
+    default: '#ffffff',               // hsl(0 0% 100%) - white
+    paper: '#ffffff',                 // card - hsl(0 0% 100%)
   },
   text: {
-    primary: hslToRgb(0, 0, 9),       // hsl(0 0% 9%) - foreground
-    secondary: hslToRgb(0, 0, 40),    // hsl(0 0% 40%) - muted-foreground
-    disabled: hslToRgb(0, 0, 60),
+    primary: hslToHex(0, 0, 9),       // hsl(0 0% 9%) - foreground
+    secondary: hslToHex(0, 0, 40),    // hsl(0 0% 40%) - muted-foreground
+    disabled: hslToHex(0, 0, 60),
   },
-  divider: hslToRgb(135, 30, 90),     // hsl(135 30% 90%) - border
-  action: {
-    active: hslToRgb(135, 48, 24),    // primary color for active states
-    hover: hslToRgb(135, 48, 35, 0.08), // primary with low opacity
-    selected: hslToRgb(135, 48, 35, 0.12),
-    disabled: hslToRgb(0, 0, 60),
-    disabledBackground: hslToRgb(0, 0, 96),
-    focus: hslToRgb(135, 48, 24, 0.12),
-  },
+  divider: hslToHex(135, 30, 90),     // hsl(135 30% 90%) - border
+  // action: {
+  //   active: hslToHex(135, 48, 24),    // primary color for active states
+  //   hover: hslToHex(135, 48, 35, 0.08), // primary with low opacity
+  //   selected: hslToHex(135, 48, 35, 0.12),
+  //   disabled: hslToHex(0, 0, 60),
+  //   disabledBackground: hslToHex(0, 0, 96),
+  //   focus: hslToHex(135, 48, 24, 0.12),
+  // },
 };
 
 /**
  * MUI Palette configuration
  * Overrides default MUI colors with company brand
+ *
+ * Note: Opacity values (action.hover, etc.) are handled by MUI automatically
+ * using the alpha() function with the base colors above
  */
 export const palette: PaletteOptions = {
   mode: 'light',
@@ -105,5 +110,5 @@ export const palette: PaletteOptions = {
   background: colors.background,
   text: colors.text,
   divider: colors.divider,
-  action: colors.action,
+  // ❌ REMOVED action object - MUI generates this automatically from your colors
 };

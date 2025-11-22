@@ -1,10 +1,10 @@
-import { type TypographyOptions } from '@mui/material/styles/createTypography';
+import { type ThemeOptions } from '@mui/material/styles';
 
 /**
  * Typography configuration
  * Defines font families, sizes, and weights
  */
-export const typography: TypographyOptions = {
+export const typography: ThemeOptions['typography'] = {
   fontFamily: [
     '-apple-system',
     'BlinkMacSystemFont',
@@ -71,5 +71,19 @@ export const typography: TypographyOptions = {
     fontWeight: 500,
     textTransform: 'none', // Disable uppercase
     letterSpacing: '0.02857em',
+  },
+
+  // Caption text
+  caption: {
+    fontSize: '0.75rem',
+    lineHeight: 1.66,
+  },
+
+  // Overline text
+  overline: {
+    fontSize: '0.75rem',
+    fontWeight: 500,
+    lineHeight: 2.66,
+    textTransform: 'uppercase',
   },
 };
